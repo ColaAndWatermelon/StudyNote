@@ -1,0 +1,32 @@
+rabbit1:
+ image: registry.docker-cn.com/library/rabbitmq
+ hostname: rabbit1
+ ports:
+  - "5675:5672"
+  - "15675:15672"
+
+rabbit2:
+ image: registry.docker-cn.com/library/rabbitmq
+ hostname: rabbit2
+ links:
+  - rabbit1
+ environment:
+  - CLUSTERED=true
+  - CLUSTER_WITH=rabbit1
+  - RAM_NODE=true
+ ports:
+   - "5673:5672"
+   - "15673:15672"
+
+rabbit3:
+ image: registry.docker-cn.com/library/rabbitmq
+ hostname: rabbit3
+ links:
+  - rabbit1
+  - rabbit2
+ environment:
+  - CLUSTERED=true
+  - CLUSTER_WITH=rabbit1
+ ports:
+    - "5674:5672"
+    - "15674:15672"  
