@@ -65,7 +65,7 @@ git remote add origin git@github.com USERNAME/REPOSITORYNAME.git
 git remote  列出远程主机（-v 可以查看远程主机网址）
 ```
 
-# 10.推送至远程库
+## 10.推送至远程库
 
 ```
 git push -u origin master (-u只需要在第一次)
